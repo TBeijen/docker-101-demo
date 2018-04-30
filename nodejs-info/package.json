@@ -1,0 +1,15 @@
+{
+  "name": "docker-sample-nodejs-info",
+  "version": "0.1.0",
+  "description": "Sample Docker app",
+  "main": "app.js",
+  "scripts": {
+  	"start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "morgan": "^1.9.0",
+    "nodejs-info": "^1.1.1"
+  }
+}
