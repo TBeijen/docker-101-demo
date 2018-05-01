@@ -1,0 +1,16 @@
+FROM node:8.9.4-alpine
+
+# create application dir
+RUN         mkdir -p /usr/src/app
+WORKDIR     /usr/src/app
+
+# install dependencies (expected to change occasionally)
+COPY        package.json .
+RUN         npm install
+
+# copy application (expected to change often)
+COPY        . .
+
+EXPOSE      8080
+
+CMD         ["npm", "start"]
