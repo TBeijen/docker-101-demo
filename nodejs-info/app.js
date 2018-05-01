@@ -2,7 +2,7 @@ const http = require('http');
 const nodeinfo = require('nodejs-info');
 const morgan = require('morgan');
  
-let logger = morgan('combined')
+const logger = morgan('combined')
 
 const server = http.createServer((req, res) => {
 	logger(req, res, (err) => {
