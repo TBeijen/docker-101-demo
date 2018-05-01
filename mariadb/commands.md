@@ -1,6 +1,9 @@
 Sample commands illustrating volumes and env
 ============================================
 
+Run with mounted volume
+-----------------------
+
 ```
 # run container
 docker run \
@@ -27,3 +30,23 @@ docker rm $(docker ps -aq --filter name=mydb)
 
 # check if table still there
 mysql -h127.0.0.1 --port=33306 -u user1 -ppw1 test -e "SHOW TABLES;"
+```
+
+Run with volume managed by docker
+---------------------------------
+
+```
+# run container
+docker run \
+  --name mydb2 \
+  -e MYSQL_ROOT_PASSWORD=r00t \
+  -e MYSQL_DATABASE=test \
+  -e MYSQL_USER=user1 \
+  -e MYSQL_PASSWORD=pw1 \
+  -p 33306:3306 \
+  -d \
+  mariadb:10.3.6
+
+  # inspect volumes
+  docker inspect $(docker ps -aq --filter name=mydb2) |jq '.[0].Mounts'
+  ```
